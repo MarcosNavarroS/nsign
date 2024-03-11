@@ -27,5 +27,28 @@ services:
     networks:
       - nsign-network
 
+  http-mockserver:
+    image: mockserver/mockserver:latest
+    container_name: nsign_http_mock_server
+    volumes:
+      - ./test/http-mockserver:/config
+    ports:
+      - 1080:1080
+    environment:
+      MOCKSERVER_WATCH_INITIALIZATION_JSON: true
+      MOCKSERVER_INITIALIZATION_JSON_PATH: "/config/*/*.init.json"
+    networks:
+      - nsign-network
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: nsign_swagger_ui
+    ports:
+      - "999:8080"
+    volumes:
+      - ../docs:/usr/share/nginx/html/docs
+    environment:
+      URLS: "[{ url: 'docs/nsign.yaml', name: 'Nsign'},]"
+
 networks:
   nsign-network:

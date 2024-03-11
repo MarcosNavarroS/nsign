@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  description: Nsign API Documentation
+  version: '3.0'
+  title: Nsign API
+
+servers:
+  - url: http://localhost:9095
+    description: Local environment
+
+paths:
+  /question/{questionId}:
+    get:
+      summary: Get question by id
+      parameters:
+        - in: path
+          name: questionId
+          schema:
+            type: integer
+          required: true
+          description: Question unique id
+      responses:
+        200:
+          $ref: '#/components/responses/GetQuestionByIdResponse'
+        404:
+          $ref: '#/components/responses/GetQuestionByIdNotFound'
+        422:
+          $ref: '#/components/responses/MissingOrInvalidFields'
+
+components:
+  responses:
+    GetQuestionByIdResponse:
+      description: 'Get question by id response'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: Unique id of question
+                example: 78138015
+              userId:
+                type: integer
+                description: Unique id of the user who posted the question
+                example: 14931049
+              tags:
+                type: array
+                items:
+                  type: string
+                description: Tags associated to the question
+                example:
+                  - java
+                  - csharp
+              isAnswered:
+                type: boolean
+                description: Define if the question has answers
+                example: true
+              score:
+                type: integer
+                description: Question score
+                example: 5
+              title:
+                type: string
+                description: Title of the question
+                example: How to custom layer of int8 type weights?
+    GetQuestionByIdNotFound:
+      description: 'Question not found'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Error message
+                example: Could not find question with id 78138015
+    MissingOrInvalidFields:
+      description: 'A request field is invalid or missing'
+      content:
+        application/json:
+          schema:
+            properties:
+              message:
+                type: array
+                items:
+                  type: string
+                description: Error info
+                example:
+                  - This value should be positive.

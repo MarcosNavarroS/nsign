@@ -1,0 +1,46 @@
+services:
+  _defaults:
+    autowire: false
+    autoconfigure: false
+
+  App\Shared\Kernel\Infrastructure\Ui\Http\Request\RequestValidationEventSubscriber:
+    tags:
+      - kernel.event_subscriber
+
+  Symfony\Component\Serializer\Serializer:
+    arguments:
+      $normalizers:
+        - '@serializer.normalizer.object'
+
+  App\Shared\Kernel\Infrastructure\Ui\Http\Validator\RequestValidator:
+    arguments:
+      - '@validator'
+
+  App\Shared\Kernel\Infrastructure\Ui\Http\Request\SerializableRequestFactory:
+    arguments:
+      - '@Symfony\Component\Serializer\Serializer'
+      - '@App\Shared\Kernel\Infrastructure\Ui\Http\Validator\RequestValidator'
+
+  App\Shared\Kernel\Infrastructure\Ui\Http\Request\SerializableRequestArgumentResolver:
+    arguments:
+      - '@App\Shared\Kernel\Infrastructure\Ui\Http\Request\SerializableRequestFactory'
+    tags:
+      - { name: 'controller.argument_value_resolver' }
+
+  response.normalizer:
+    class: 'Symfony\Component\Serializer\Serializer'
+    arguments:
+      $normalizers:
+        - '@serializer.normalizer.object'
+      $encoders:
+        - '@serializer.encoder.json'
+
+  App\Shared\Kernel\Infrastructure\Ui\Http\Response\SerializableResponseFactory:
+    arguments:
+      - '@response.normalizer'
+
+  App\Shared\Kernel\Infrastructure\Ui\Http\Response\SerializeResponseEventListener:
+    arguments:
+      - '@App\Shared\Kernel\Infrastructure\Ui\Http\Response\SerializableResponseFactory'
+    tags:
+      - { name: 'kernel.event_listener', event: kernel.view }
