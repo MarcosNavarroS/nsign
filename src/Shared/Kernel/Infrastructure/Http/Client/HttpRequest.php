@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Kernel\Infrastructure\Http\Client;
 
+use InvalidArgumentException;
+
 final class HttpRequest
 {
     public array $headers;
@@ -76,14 +78,14 @@ final class HttpRequest
     private function assertHeader($header): void
     {
         if (!is_string($header)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Header name must be a string but %s provided.',
                 is_object($header) ? get_class($header) : gettype($header)
             ));
         }
 
         if ($header === '') {
-            throw new \InvalidArgumentException('Header name can not be empty.');
+            throw new InvalidArgumentException('Header name can not be empty.');
         }
     }
 
@@ -94,7 +96,7 @@ final class HttpRequest
         }
 
         if (count($value) === 0) {
-            throw new \InvalidArgumentException('Header value can not be an empty array.');
+            throw new InvalidArgumentException('Header value can not be an empty array.');
         }
 
         return $this->trimHeaderValues($value);
@@ -104,7 +106,7 @@ final class HttpRequest
     {
         return array_map(function ($value) {
             if (!is_scalar($value) && null !== $value) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Header value must be scalar or null but %s provided.',
                     is_object($value) ? get_class($value) : gettype($value)
                 ));

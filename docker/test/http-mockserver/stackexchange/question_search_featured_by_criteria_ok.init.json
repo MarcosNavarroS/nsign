@@ -1,0 +1,80 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/questions/featured",
+      "queryStringParameters" : {
+        "sort": "activity",
+        "site": "stackoverflow",
+        "pagesize": "2",
+        "page": "1",
+        "order": "desc"
+      }
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "headers": {
+        "Content-Type": ["application/json"]
+      },
+      "body": {
+        "items": [
+          {
+            "tags": ["java"],
+            "owner": {
+              "account_id": 8853109,
+              "reputation": 5115,
+              "user_id": 3321321,
+              "user_type": "registered",
+              "accept_rate": 97,
+              "profile_image": "https://www.gravatar.com/avatar/4fa1f334290e59101fa7e5368be5cb50?s=256&d=identicon&r=PG&f=y&so-version=2",
+              "display_name": "Johnny Metz",
+              "link": "https://stackoverflow.com/users/6611672/johnny-metz"
+            },
+            "is_answered": false,
+            "view_count": 19,
+            "bounty_amount": 100,
+            "bounty_closes_date": 1710779162,
+            "answer_count": 0,
+            "score": 5,
+            "last_activity_date": 1710174362,
+            "creation_date": 1709915300,
+            "last_edit_date": 1709915913,
+            "question_id": 9999,
+            "content_license": "CC BY-SA 4.0",
+            "link": "https://stackoverflow.com/questions/78129019/can-you-have-an-li-in-a-autonomous-custom-element-with-the-parent-ul-not",
+            "title": "Answer1 Title"
+          },
+          {
+            "tags": ["java"],
+            "owner": {
+              "account_id": 8853109,
+              "reputation": 5115,
+              "user_id": 3321321,
+              "user_type": "registered",
+              "accept_rate": 97,
+              "profile_image": "https://www.gravatar.com/avatar/4fa1f334290e59101fa7e5368be5cb50?s=256&d=identicon&r=PG&f=y&so-version=2",
+              "display_name": "Johnny Metz",
+              "link": "https://stackoverflow.com/users/6611672/johnny-metz"
+            },
+            "is_answered": false,
+            "view_count": 35,
+            "bounty_amount": 500,
+            "bounty_closes_date": 1710777022,
+            "answer_count": 0,
+            "score": 5,
+            "last_activity_date": 1710172222,
+            "creation_date": 1708726083,
+            "last_edit_date": 1708729078,
+            "question_id": 9998,
+            "content_license": "CC BY-SA 4.0",
+            "link": "https://stackoverflow.com/questions/78050409/removing-a-non-nullable-django-field-with-separatedatabaseandstate",
+            "title": "Answer2 Title"
+          }
+        ],
+        "has_more": true,
+        "quota_max": 10000,
+        "quota_remaining": 9958
+      }
+    }
+  }
+]

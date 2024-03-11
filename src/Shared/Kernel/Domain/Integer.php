@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Shared\Kernel\Domain;
 
 
-abstract class Integer implements \JsonSerializable
+use JsonSerializable;
+
+abstract class Integer implements JsonSerializable
 {
     final private function __construct(private readonly int $value)
     {

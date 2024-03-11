@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Shared\Kernel\Infrastructure\Ui\Http\Request;
 
-final class NotValidRequestBodyException extends \InvalidArgumentException
+use InvalidArgumentException;
+
+final class NotValidRequestBodyException extends InvalidArgumentException
 {
     public function __construct()
     {

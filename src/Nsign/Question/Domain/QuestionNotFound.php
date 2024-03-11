@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Nsign\Question\Domain;
 
-final class QuestionNotFound extends \Exception
+use Exception;
+
+final class QuestionNotFound extends Exception
 {
     private function __construct(string $message = '')
     {

@@ -28,3 +28,15 @@ services:
       - '@App\Nsign\Question\Application\GetQuestionById\GetQuestionByIdUseCase'
     tags:
       - controller.service_arguments
+
+  App\Nsign\Question\Application\SearchFeaturedQuestionsByCriteria\SearchFeaturedQuestionsByCriteriaRepository: '@App\Nsign\Question\Infrastructure\Persistence\Http\HttpQuestionRepository'
+
+  App\Nsign\Question\Application\SearchFeaturedQuestionsByCriteria\SearchFeaturedQuestionsByCriteriaUseCase:
+    arguments:
+      - '@App\Nsign\Question\Application\SearchFeaturedQuestionsByCriteria\SearchFeaturedQuestionsByCriteriaRepository'
+
+  App\Nsign\Question\Infrastructure\Ui\Http\Controller\SearchFeaturedQuestionsByCriteria\SearchFeaturedQuestionsByCriteriaController:
+    arguments:
+      - '@App\Nsign\Question\Application\SearchFeaturedQuestionsByCriteria\SearchFeaturedQuestionsByCriteriaUseCase'
+    tags:
+      - controller.service_arguments

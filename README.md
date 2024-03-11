@@ -1,7 +1,28 @@
 
 #  Marcos Navarro Nsign prueba técnica
 
+## Presentación
+¡Hola! Soy Marcos Navarro y en esta prueba técnica mostraré mis aptitudes en el desarrollo de una api con PHP y Symfony.
+
+En este caso, he desarrollado dos endpoints que se nutren de la api de stackexchange para consultar los datos, tal y como sé pedía en las especificaciones de la prueba.
+
+Para estructurar el código he utilizado arquitectura hexagonal y para el modelaje de las entidades he utilizado domain driven design.
+
+## Documentación
+
+Los endpoints desarrollados son dos, uno que permite consultar una question mediante su id y otro que te lista las questions que están ahora mismo promocionadas, permitiendo filtrar por fechas, paginar y ordenar los resultados.
+Inicialmente, se consultan los datos de stackoverflow, pero es posible cambiar entre las diferentes páginas del ecosistema de stackexchange modificando la variable de entorno "STACKEXCHANGE_API_SITE".
+
+He testeado la mayor parte de la funcionalidad, ya sea con test unitarios, de integración o funcionales. 
+En mi experiencia, consensuamos con el equipo que tipo de test desarrollamos para cada parte de la aplicación, aunque siempre buscando que este todo cubierto. 
+Espero que haya sido suficiente en este caso. Para evitar que los test consuman rate limit de la api y para tener un entorno de test cerrado, las peticiones externas en los test atacan a un mock server.
+En este caso concreto, al tener solo consulta de datos, las entidades de dominio no tienen prácticamente lógica de negocio, mas alla de almacenar datos, por ese motivo no tienen test unitarios.
+
+A continuación detallo algunos comandos que hay que lanzar para ejecutar la aplicación o para ejecutar la interfaz gráfica de la definición de la api.
+
 ## Instalación y comandos útiles
+
+Para ejecutar la aplicación es necesario tener instalado docker/docker-compose y make para lanzar los comandos siguientes.
 
 Para poder hacer uso de la api por primera vez, lanzar el siguiente comando en un terminal:
 
@@ -23,19 +44,10 @@ Para abrir una terminal en el contenedor:
   make bash
 ```
 
-Con el siguiente comando, se levanta la interfaz gráfica de swagger, desde donde podréis ver la documentación de los endpoints del api:
+Con el siguiente comando, se levanta la interfaz gráfica de swagger(http://localhost:999/), desde donde podréis ver la definición de los endpoints del api:
 ```bash
   make swagger
 ```
 
-## Documentación
-
-El proyecto está desarrollado aplicando arquitectura hexagonal y domain driven design y para el acceso a datos se está utilizando la api de stack exchange.
-
-Por defecto se están consultando datos de stackoverflow, pero podemos cambiar a cualquiera de las páginas del ecosistema de stackexchange cambiando la variable de entorno STACKEXCHANGE_API_SITE.
-
-En cuanto a los test, las peticiones a la api externa se simulan con un mock server, para evitar superar el límite de peticiones que tienen establecido.
-Los test unitarios que ya eran cubiertos por algun test de integracion se han obviado. En una situacion real se llegaria a un consenso con el equipo sobre que alcance buscamos en la cobertura y la implementacion de los test.
-Por otro lado, por la tipologia de la prueba tecnica, las entidades de dominio han quedado anemicas, por ese motivo no he creado test unitarios de ellas.
-
-Para acceder a la definición de los endpoints, levantar el contenedor de swagger y acceder a http://localhost:999/
+## Palabras finales
+Espero que os haya gustado la prueba y agradeceros la oportunidad de participar en el proceso. Un saludo.

@@ -9,7 +9,7 @@ servers:
     description: Local environment
 
 paths:
-  /question/{questionId}:
+  /questions/{questionId}:
     get:
       summary: Get question by id
       parameters:
@@ -24,6 +24,60 @@ paths:
           $ref: '#/components/responses/GetQuestionByIdResponse'
         404:
           $ref: '#/components/responses/GetQuestionByIdNotFound'
+        422:
+          $ref: '#/components/responses/MissingOrInvalidFields'
+
+  /questions/featured:
+    get:
+      summary: Get featured questions by criteria
+      parameters:
+        - in: query
+          name: fromDate
+          schema:
+            type: integer
+          required: false
+          description: Timestamp for filter by creation date
+          example: 1709956810
+        - in: query
+          name: toDate
+          schema:
+            type: integer
+          required: false
+          description: Timestamp for filter by creation date
+          example: 1712868143
+        - in: query
+          name: page
+          schema:
+            type: integer
+          required: false
+          description: Page
+          example: 1
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+          required: false
+          description: How many questions are returned per page
+          example: 25
+        - in: query
+          name: sort
+          schema:
+            type: string
+            enum: ["activity", "creation", "votes"]
+          required: false
+          description: Sorts accepted
+          example: activity
+        - in: query
+          name: order
+          schema:
+            type: string
+            enum: [ "asc", "desc" ]
+          required: false
+          description: Order accepted
+          example: desc
+      responses:
+        200:
+          $ref: '#/components/responses/SearchFeaturedQuestionsByCriteriaResponse'
         422:
           $ref: '#/components/responses/MissingOrInvalidFields'
 
@@ -88,3 +142,47 @@ components:
                 description: Error info
                 example:
                   - This value should be positive.
+    SearchFeaturedQuestionsByCriteriaResponse:
+      description: 'Search featured questions by criteria response'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              questions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    questionId:
+                      type: integer
+                      description: Unique id of question
+                      example: 78138015
+                    userId:
+                      type: integer
+                      description: Unique id of the user who posted the question
+                      example: 14931049
+                    tags:
+                      type: array
+                      items:
+                        type: string
+                      description: Tags associated to the question
+                      example:
+                        - java
+                        - csharp
+                    isAnswered:
+                      type: boolean
+                      description: Define if the question has answers
+                      example: true
+                    score:
+                      type: integer
+                      description: Question score
+                      example: 5
+                    title:
+                      type: string
+                      description: Title of the question
+                      example: How to custom layer of int8 type weights?
+              hasMore:
+                type: boolean
+                description: Define if more results are available
+                example: true

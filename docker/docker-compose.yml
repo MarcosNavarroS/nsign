@@ -35,7 +35,7 @@ services:
     ports:
       - 1080:1080
     environment:
-      MOCKSERVER_WATCH_INITIALIZATION_JSON: true
+      MOCKSERVER_WATCH_INITIALIZATION_JSON: "true"
       MOCKSERVER_INITIALIZATION_JSON_PATH: "/config/*/*.init.json"
     networks:
       - nsign-network

@@ -5,3 +5,7 @@ services:
   App\Nsign\Question\Application\GetQuestionById\GetQuestionByIdUseCase:
     arguments:
       - '@App\Nsign\Question\Domain\QuestionRepository'
+
+  App\Nsign\Question\Application\SearchFeaturedQuestionsByCriteria\SearchFeaturedQuestionsByCriteriaUseCase:
+    arguments:
+      - '@App\Nsign\Question\Application\SearchFeaturedQuestionsByCriteria\SearchFeaturedQuestionsByCriteriaRepository'

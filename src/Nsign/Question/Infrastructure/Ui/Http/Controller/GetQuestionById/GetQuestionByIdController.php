@@ -20,7 +20,7 @@ final class GetQuestionByIdController
     ) {
     }
 
-    #[Route('/question/{questionId}', name: 'nsign.question.get', methods: ['GET'], format: 'json')]
+    #[Route('/questions/{questionId}', name: 'nsign.question.get', methods: ['GET'], format: 'json')]
     public function __invoke(GetQuestionByIdRequest $request): SerializableResponse
     {
         try {

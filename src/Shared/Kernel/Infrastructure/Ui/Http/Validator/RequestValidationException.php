@@ -2,7 +2,9 @@
 
 namespace App\Shared\Kernel\Infrastructure\Ui\Http\Validator;
 
-class RequestValidationException extends \Exception
+use Exception;
+
+class RequestValidationException extends Exception
 {
     private $errors = [];
 

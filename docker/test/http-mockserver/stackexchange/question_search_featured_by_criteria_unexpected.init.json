@@ -1,0 +1,21 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/questions/featured",
+      "queryStringParameters" : {
+        "sort": "activity",
+        "site": "stackoverflow",
+        "pagesize": "20",
+        "page": "20",
+        "order": "desc"
+      }
+    },
+    "httpResponse": {
+      "statusCode": 500,
+      "headers": {
+        "Content-Type": ["application/json"]
+      }
+    }
+  }
+]

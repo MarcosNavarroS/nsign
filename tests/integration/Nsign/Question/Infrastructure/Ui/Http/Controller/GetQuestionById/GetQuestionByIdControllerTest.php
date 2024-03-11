@@ -128,7 +128,7 @@ final class GetQuestionByIdControllerTest extends WebTestCase
     {
         $this->client->request(
             method: 'GET',
-            uri: sprintf('/question/%d', $request['questionId']),
+            uri: sprintf('/questions/%d', $request['questionId']),
         );
     }
 

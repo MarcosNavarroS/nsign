@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\functional\Nsign\Question\Infrastructure\Ui\Http\Controller\GetQuestionById;
+namespace App\Tests\functional\Nsign\Question\Infrastructure\Ui\Http\Controller\SearchFeaturedQuestionsByCriteria;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-final class GetQuestionByIdControllerTest extends WebTestCase
+final class SearchFeaturedQuestionsByCriteriaControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
 
@@ -21,11 +21,11 @@ final class GetQuestionByIdControllerTest extends WebTestCase
     /**
      * @test
      */
-    public function shouldReturnOktOnGetQuestionById()
+    public function shouldReturnOktOnSearchFeaturedQuestionsByCriteria()
     {
         $this->client->request(
             method: 'GET',
-            uri: '/questions/78136584',
+            uri: '/questions/featured?order=desc&sort=activity&page=1&pageSize=2',
         );
 
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
