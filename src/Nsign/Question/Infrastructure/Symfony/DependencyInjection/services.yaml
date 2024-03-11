@@ -1,0 +1,30 @@
+services:
+  _defaults:
+    autowire: false
+    autoconfigure: false
+
+  App\Shared\Kernel\Infrastructure\Http\Client\SymfonyHttpClient:
+    arguments:
+      - '@http_client'
+      - '%env(HTTP_CLIENT_TIMEOUT)%'
+
+  App\Nsign\Question\Infrastructure\Persistence\Http\HttpQuestionSerializer: ~
+
+  App\Nsign\Question\Infrastructure\Persistence\Http\HttpQuestionRepository:
+    arguments:
+      - '@App\Shared\Kernel\Infrastructure\Http\Client\SymfonyHttpClient'
+      - '%env(STACKEXCHANGE_API_HOST)%'
+      - '%env(STACKEXCHANGE_API_SITE)%'
+      - '@App\Nsign\Question\Infrastructure\Persistence\Http\HttpQuestionSerializer'
+
+  App\Nsign\Question\Domain\QuestionRepository: '@App\Nsign\Question\Infrastructure\Persistence\Http\HttpQuestionRepository'
+
+  App\Nsign\Question\Application\GetQuestionById\GetQuestionByIdUseCase:
+    arguments:
+      - '@App\Nsign\Question\Domain\QuestionRepository'
+
+  App\Nsign\Question\Infrastructure\Ui\Http\Controller\GetQuestionById\GetQuestionByIdController:
+    arguments:
+      - '@App\Nsign\Question\Application\GetQuestionById\GetQuestionByIdUseCase'
+    tags:
+      - controller.service_arguments

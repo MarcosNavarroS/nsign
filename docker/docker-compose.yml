@@ -27,5 +27,17 @@ services:
     networks:
       - nsign-network
 
+  http-mockserver:
+    image: mockserver/mockserver:latest
+    volumes:
+      - ./test/http-mockserver:/config
+    ports:
+      - 1080:1080
+    environment:
+      MOCKSERVER_WATCH_INITIALIZATION_JSON: true
+      MOCKSERVER_INITIALIZATION_JSON_PATH: "/config/*/*.init.json"
+    networks:
+      - nsign-network
+
 networks:
   nsign-network:

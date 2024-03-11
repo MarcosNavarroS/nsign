@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    public: true
+
+  App\Nsign\Question\Application\GetQuestionById\GetQuestionByIdUseCase:
+    arguments:
+      - '@App\Nsign\Question\Domain\QuestionRepository'

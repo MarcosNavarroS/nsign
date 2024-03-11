@@ -1,0 +1,49 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/questions/78136584",
+      "queryStringParameters" : {
+        "site" : "stackoverflow"
+      }
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "headers": {
+        "Content-Type": ["application/json"]
+      },
+      "body": {
+        "items": [
+          {
+            "tags": [
+              "java",
+              "list"
+            ],
+            "owner": {
+              "account_id": 26729287,
+              "reputation": 41,
+              "user_id": 20331111,
+              "user_type": "registered",
+              "profile_image": "https://i.stack.imgur.com/uP0gi.jpg?s=256&g=1",
+              "display_name": "Doom-Git",
+              "link": "https://stackoverflow.com/users/20331929/doom-git"
+            },
+            "is_answered": true,
+            "view_count": 33,
+            "answer_count": 1,
+            "score": -1,
+            "last_activity_date": 1710090682,
+            "creation_date": 1710087306,
+            "question_id": 78136584,
+            "content_license": "CC BY-SA 4.0",
+            "link": "https://stackoverflow.com/questions/78136584/java-tolist-method-inserts-spaces-after-comma",
+            "title": "mock server title"
+          }
+        ],
+        "has_more": false,
+        "quota_max": 300,
+        "quota_remaining": 247
+      }
+    }
+  }
+]

@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace App\Nsign\Question\Domain;
 
+use App\Shared\Nsign\Domain\UserId;
+
 final class Question
 {
     public function __construct(
         private readonly QuestionId $id,
-        private readonly Owner $owner,
+        private readonly ?UserId $userId,
+        private readonly Tags $tags,
         private readonly bool $isAnswered,
-        private readonly bool $isClosed,
         private readonly Score $score,
         private readonly Title $title,
-        private readonly Body $body,
     ) {
     }
 
@@ -22,19 +23,19 @@ final class Question
         return $this->id;
     }
 
-    public function owner(): Owner
+    public function userId(): ?UserId
     {
-        return $this->owner;
+        return $this->userId;
+    }
+
+    public function tags(): Tags
+    {
+        return $this->tags;
     }
 
     public function isAnswered(): bool
     {
         return $this->isAnswered;
-    }
-
-    public function isClosed(): bool
-    {
-        return $this->isClosed;
     }
 
     public function score(): Score
@@ -45,10 +46,5 @@ final class Question
     public function title(): Title
     {
         return $this->title;
-    }
-
-    public function body(): Body
-    {
-        return $this->body;
     }
 }

@@ -1,4 +1,5 @@
-when@dev:
-    _errors:
-        resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
-        prefix: /_error
+question:
+    resource: '../../src/Nsign/Question/Infrastructure/Ui/Http/Controller/**/*Controller.php'
+    type: annotation
+    format: json
+    stateless: true

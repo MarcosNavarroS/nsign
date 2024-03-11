@@ -1,0 +1,17 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/questions/222",
+      "queryStringParameters" : {
+        "site" : "stackoverflow"
+      }
+    },
+    "httpResponse": {
+      "statusCode": 500,
+      "headers": {
+        "Content-Type": ["application/json"]
+      }
+    }
+  }
+]

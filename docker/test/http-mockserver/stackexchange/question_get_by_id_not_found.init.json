@@ -1,0 +1,23 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/questions/111",
+      "queryStringParameters" : {
+        "site" : "stackoverflow"
+      }
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "headers": {
+        "Content-Type": ["application/json"]
+      },
+      "body": {
+        "items": [],
+        "has_more": false,
+        "quota_max": 10000,
+        "quota_remaining": 9994
+      }
+    }
+  }
+]
